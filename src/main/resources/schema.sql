@@ -1,14 +1,14 @@
 drop table if exists recipes;
-/*drop table if exists doctors;*/
+drop table if exists doctors;
 drop table if exists patients;
 
-/*CREATE TABLE doctors (
+CREATE TABLE doctors (
    id SERIAL PRIMARY KEY,
    first_name VARCHAR (45),
    last_name VARCHAR (45),
    middle_name VARCHAR (45),
    specialization VARCHAR (45)
-);*/
+);
 
 CREATE TABLE patients (
    id SERIAL PRIMARY KEY,
