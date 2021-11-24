@@ -5,6 +5,7 @@ import java.time.Instant;
 
 @Table(name = "recipes")
 @Entity
+
 public class Recipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
