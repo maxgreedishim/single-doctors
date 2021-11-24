@@ -14,7 +14,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan("polyclinic.*")
 @EnableJpaRepositories("polyclinic.*")
 
-
 public class Application {
 
 	public static void main(String[] args) {
