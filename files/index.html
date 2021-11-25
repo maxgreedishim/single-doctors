@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Поликлиника</title>
 </head>
-<body> 
+<body>
+<h1>Регистратура</h1>
+
+<h2>Доктора</h2>
     <ol></ol>
-</body>
+
 <script>
     fetch('/api/doctors?page=0')
         .then(res => res.json())
@@ -16,12 +19,38 @@
             const doctors = obj._embedded.doctors
             doctors.forEach(doctor => {
                 const p = document.createElement("li")
-                p.textContent =  `Прием ведет доктор ${doctor.firstName}, ${doctor.specialization}, ${doctor.lastName}, ${doctor.middleName}.`
+                p.textContent =  `Прием ведет доктор ${doctor.lastName}, ${doctor.firstName}, ${doctor.middleName}, ${doctor.specialization}`
                 ol.appendChild(p)
             });
-            /*const h1 = document.createElement('h1')
-            h1.textContent = `Прием ведет доктор ${obj.firstName}, ${obj.specialization}.`
-            document.body.appendChild(h1)*/
         })
 </script>
+
+<script>
+    fetch('/api/patients?page=0')
+        .then(res => res.json())
+        .then(obj => {
+            const ol = document.querySelector("ol")
+            const patients = obj._embedded.patients
+            patients.forEach(patient => {
+                const p = document.createElement("li")
+                p.textContent =  `Пациенты ${patient.lastName}, ${patient.firstName}, ${patient.middleName}, ${patient.phoneNumber}`
+                ol.appendChild(p)
+            });
+        })
+</script>
+<script>
+    fetch('api/recipe?page=0')
+        .then(res => res.json())
+        .then(obj => {
+            const ol = document.querySelector("ol")
+            const recipes = obj._embedded.recipes
+            recipes.forEach(recipe => {
+                const p = document.createElement("li")
+                p.textContent =  `Рецепты ${recipe.description}, ${recipe.doctor}, ${recipe.patient}, ${recipe.creationDate}, ${recipe.validity}, ${recipe.priority}`
+                ol.appendChild(p)
+            });
+        })
+</script>
+
+</body>
 </html>
